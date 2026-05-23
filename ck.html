@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EcoShop | Premium Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#00873b",
+                    "secondary-container": "#92f5a4",
+                    "secondary-fixed": "#95f8a7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container-low": "#d1ffd8",
+                    "on-primary-fixed-variant": "#005320",
+                    "outline": "#6e7b6c",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container": "#bcfdc9",
+                    "secondary": "#006d30",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#002109",
+                    "primary": "#006b2c",
+                    "on-secondary-container": "#007233",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#a9e9b6",
+                    "on-tertiary-container": "#f7fff3",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#62df7d",
+                    "on-background": "#00210d",
+                    "primary-container": "#00873a",
+                    "surface": "#eaffea",
+                    "on-tertiary-fixed": "#002109",
+                    "on-surface-variant": "#3e4a3d",
+                    "primary-fixed": "#7ffc97",
+                    "surface-tint": "#006e2d",
+                    "inverse-on-surface": "#c3ffce",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#00210d",
+                    "surface-variant": "#b1f2be",
+                    "surface-bright": "#eaffea",
+                    "surface-container-highest": "#b1f2be",
+                    "tertiary": "#006b2d",
+                    "inverse-primary": "#62df7d",
+                    "surface-container-high": "#b7f7c3",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed": "#00210a",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#79db8d",
+                    "inverse-surface": "#00391a",
+                    "on-primary-container": "#f7fff2",
+                    "on-primary": "#ffffff",
+                    "background": "#eaffea",
+                    "outline-variant": "#bdcaba",
+                    "on-secondary-fixed-variant": "#005323"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "48px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F0FDF4; /* Ultra-light Mint Background from System */
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(22, 163, 74, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .eco-shimmer {
+            background: linear-gradient(90deg, #F0FDF4 25%, #DCFCE7 50%, #F0FDF4 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+        }
+        .magnetic-btn:hover {
+            box-shadow: 0 10px 20px rgba(0, 107, 44, 0.2);
+        }
+        input:focus {
+            outline: none;
+            border-bottom-color: #006b2c !important;
+        }
+        .step-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-container-max rounded-full bg-surface/70 backdrop-blur-xl border border-white/20 shadow-xl shadow-primary/10 flex justify-between items-center px-8 py-3 z-50">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-display font-bold text-primary">EcoShop</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Catalog</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Cart</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Track</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300"><span class="material-symbols-outlined text-primary">language</span></button>
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300 relative">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold" id="cart-badge">2</span>
+</button>
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300"><span class="material-symbols-outlined text-primary">account_circle</span></button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Multistep Progress -->
+<div class="flex justify-center items-center mb-12 space-x-4">
+<div class="flex items-center space-x-2" id="step-dot-1">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-label-md">1</div>
+<span class="font-label-md text-label-md text-primary">Cart</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-2 opacity-40" id="step-dot-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md">2</div>
+<span class="font-label-md text-label-md">Details</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-2 opacity-40" id="step-dot-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md">3</div>
+<span class="font-label-md text-label-md">Payment</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Step 1: Cart View -->
+<div class="lg:col-span-8 step-transition" id="cart-step">
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface">Your Selection</h1>
+<div class="space-y-4">
+<!-- Cart Item 1 -->
+<div class="glass-surface p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 group">
+<div class="w-32 h-32 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up shot of high-quality organic loose leaf green tea in a minimalist ceramic container, placed on a light wood surface with soft morning light filtering through. The aesthetic is clean, eco-friendly, and premium, using a palette of soft greens and natural textures to evoke a sense of wellness and purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2DhYh_FjoX173VC0Nz83vl_zMJG1C6Y-inXF-FF3KEDM0d3fv1FcxN5VZM3a3isGxuG90rEEMe6n__wDXuyhvU7AvlV2TmkEQJQiIuninasEXtX4dexbC6l_1zLoI8SpjPwkKlAQEQEJ1cJuX0tI9N3xew0MulT-X1lkyBDWBlxNFvGiRzKAdwaZSMJf5EgGVh4PY3ZAoqYqTl0Yiq3h8V5lEhmVxqDpIZaNkxX-KgLJty0lunL_WuC4hhphrtZslHxkl-jrVmPzt"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-lg text-title-lg text-on-surface">Organic Ceremonial Matcha</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Grade A • 50g Tin</p>
+<div class="mt-4 flex items-center space-x-4">
+<div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('matcha', -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-12 text-center font-bold text-label-md" id="qty-matcha">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('matcha', 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="text-error font-label-md text-label-md hover:underline decoration-2 underline-offset-4">Remove</button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary">$45.00</p>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="glass-surface p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 group">
+<div class="w-32 h-32 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A premium, eco-friendly bamboo fiber yoga block with an engraved minimalist floral pattern, set against a background of soft mint green fabric. The lighting is diffused and calm, highlighting the natural wood grain and sustainable texture of the product. The overall mood is sophisticated, serene, and high-end wellness boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIWOH_Z0y0CmRYaWKNpCIWrCthu_FQetxpuijZ-7FxqfFwhb9EWPiJOr7KOiPb-fC3an7L43arMD8CLfJZBMDo3UXGg3wI6s44FXl9iN5zbQv2D-UuOaKXev9CQLTvMPvAwckAg1IqQ0ha3XelEu2KbSpcvPtkod35a17w480duSHue562pqX0jDWib_zo8hwR2fU8DXdRUk8oN3bni9QKn-_PhqEvE8Z4qMxpgnIKYBXExkETxee49JNi0s5IL05oKIfODcCduZpm"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-lg text-title-lg text-on-surface">Bamboo Fiber Yoga Block</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Natural • Non-Slip</p>
+<div class="mt-4 flex items-center space-x-4">
+<div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('block', -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-12 text-center font-bold text-label-md" id="qty-block">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('block', 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="text-error font-label-md text-label-md hover:underline decoration-2 underline-offset-4">Remove</button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary">$28.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Details View (Hidden by Default) -->
+<div class="lg:col-span-8 step-transition hidden" id="details-step">
+<button class="flex items-center text-primary font-label-md mb-6 hover:translate-x-[-4px] transition-transform" onclick="goToStep(1)">
+<span class="material-symbols-outlined mr-2">arrow_back</span> Back to Cart
+                </button>
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface">Shipping Information</h1>
+<div class="glass-surface p-8 rounded-2xl space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">Full Name</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">Email Address</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">Street Address</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all" placeholder="123 Eco Way" type="text"/>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">City</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all" placeholder="Greenfield" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">Postal Code</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all" placeholder="90210" type="text"/>
+</div>
+<div class="relative col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1">Country</label>
+<select class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all appearance-none">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Germany</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Payment View (Hidden by Default) -->
+<div class="lg:col-span-8 step-transition hidden" id="payment-step">
+<button class="flex items-center text-primary font-label-md mb-6 hover:translate-x-[-4px] transition-transform" onclick="goToStep(2)">
+<span class="material-symbols-outlined mr-2">arrow_back</span> Back to Shipping
+                </button>
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface">Payment Method</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-primary" id="btn-pay-qr" onclick="setPayment('qr')">
+<span class="material-symbols-outlined text-primary text-3xl">qr_code_2</span>
+<span class="font-label-md text-label-md">QR Code</span>
+</button>
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-transparent" id="btn-pay-paypal" onclick="setPayment('paypal')">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">payments</span>
+<span class="font-label-md text-label-md">PayPal</span>
+</button>
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-transparent" id="btn-pay-crypto" onclick="setPayment('crypto')">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">currency_bitcoin</span>
+<span class="font-label-md text-label-md">Crypto</span>
+</button>
+</div>
+<div class="glass-surface p-8 rounded-2xl min-h-[300px] flex flex-col items-center justify-center" id="payment-container">
+<!-- QR Payment Dynamic Content -->
+<div class="text-center w-full" id="pay-content-qr">
+<p class="font-title-lg text-title-lg mb-4">Scan to Pay</p>
+<div class="w-48 h-48 bg-white p-4 mx-auto mb-4 rounded-xl shadow-inner flex items-center justify-center">
+<span class="material-symbols-outlined text-[140px] text-on-surface">qr_code_2</span>
+</div>
+<div class="flex items-center justify-center space-x-2 text-primary font-bold">
+<span class="material-symbols-outlined">timer</span>
+<span id="timer">02:00</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Expires in 2 minutes for security</p>
+</div>
+<!-- PayPal Content -->
+<div class="hidden text-center w-full" id="pay-content-paypal">
+<p class="font-title-lg text-title-lg mb-6">Continue with PayPal</p>
+<div class="bg-[#003087] text-white py-4 px-12 rounded-full inline-flex items-center gap-2 cursor-pointer magnetic-btn">
+<span class="font-bold text-lg">PayPal</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-6 italic">You will be redirected to PayPal to complete your purchase safely.</p>
+</div>
+<!-- Crypto Content -->
+<div class="hidden w-full" id="pay-content-crypto">
+<p class="font-title-lg text-title-lg mb-6 text-center">Crypto Payment (USDT)</p>
+<div class="space-y-4 max-w-md mx-auto">
+<div class="flex items-center gap-2 p-2 bg-surface-container-low rounded-xl">
+<button class="flex-1 py-2 rounded-lg bg-primary text-white font-label-md">TRC20</button>
+<button class="flex-1 py-2 rounded-lg text-on-surface-variant font-label-md">ERC20</button>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-label-sm mb-1 ml-1 text-on-surface-variant">USDT Deposit Address</label>
+<div class="flex items-center bg-surface-container-low p-4 rounded-xl border border-outline-variant">
+<code class="text-xs break-all flex-grow font-mono">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code>
+<button class="ml-2 p-2 hover:bg-primary-container/20 rounded-full" onclick="copyWallet()">
+<span class="material-symbols-outlined text-primary">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary (Constant) -->
+<div class="lg:col-span-4">
+<div class="glass-surface p-8 rounded-2xl sticky top-32">
+<h2 class="font-title-lg text-title-lg mb-6 text-on-surface">Order Summary</h2>
+<div class="space-y-4 pb-6 border-b border-outline-variant">
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-bold text-on-surface" id="summary-subtotal">$73.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant">Shipping Fee</span>
+<span class="font-bold text-on-surface">$5.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant">Estimated Tax</span>
+<span class="font-bold text-on-surface" id="summary-tax">$5.84</span>
+</div>
+</div>
+<div class="pt-6 pb-8">
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-title-lg text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary" id="summary-total">$83.84</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">Prices include environmental sustainability contribution fees.</p>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-full font-label-md text-label-md magnetic-btn flex items-center justify-center gap-2 group" id="main-cta" onclick="handleCTAClick()">
+<span id="cta-text">Checkout Now</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="mt-6 flex items-center justify-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="font-label-sm text-label-sm">Secure Encrypted Checkout</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant py-12 px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div>
+<span class="font-display text-headline-md text-primary block mb-4">EcoShop</span>
+<p class="font-body-md text-on-surface-variant">Redefining luxury through the lens of sustainability and organic vitality.</p>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4">Customer Care</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" href="#">Sustainability Report</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4">Support</h4>
+<p class="font-label-sm text-on-surface-variant">Need help? Our specialists are available 24/7.</p>
+<a class="text-primary font-bold mt-2 inline-block" href="#">Contact Support</a>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-b-2 border-primary py-2 pr-10 focus:outline-none" placeholder="Email address" type="email"/>
+<button class="absolute right-0 bottom-2 text-primary"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-12 pt-8 border-t border-outline-variant text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 EcoShop Organic Commerce. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        let currentStep = 1;
+        let matchaQty = 1;
+        let blockQty = 1;
+        const prices = { matcha: 45, block: 28 };
+        let countdown;
+
+        function updateQty(item, change) {
+            if (item === 'matcha') {
+                matchaQty = Math.max(0, matchaQty + change);
+                document.getElementById('qty-matcha').textContent = matchaQty;
+            } else {
+                blockQty = Math.max(0, blockQty + change);
+                document.getElementById('qty-block').textContent = blockQty;
+            }
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const subtotal = (matchaQty * prices.matcha) + (blockQty * prices.block);
+            const tax = subtotal * 0.08;
+            const shipping = subtotal > 0 ? 5.00 : 0;
+            const total = subtotal + tax + shipping;
+
+            document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cart-badge').textContent = matchaQty + blockQty;
+        }
+
+        function goToStep(step) {
+            currentStep = step;
+            
+            // Toggle Visibility
+            document.getElementById('cart-step').classList.add('hidden');
+            document.getElementById('details-step').classList.add('hidden');
+            document.getElementById('payment-step').classList.add('hidden');
+
+            const dots = [1, 2, 3];
+            dots.forEach(num => {
+                const dot = document.getElementById(`step-dot-${num}`);
+                if (num === step) {
+                    dot.classList.remove('opacity-40');
+                    dot.querySelector('div').classList.add('bg-primary', 'text-white');
+                    dot.querySelector('div').classList.remove('bg-surface-container-highest', 'text-on-surface');
+                } else {
+                    dot.classList.add('opacity-40');
+                    dot.querySelector('div').classList.remove('bg-primary', 'text-white');
+                    dot.querySelector('div').classList.add('bg-surface-container-highest', 'text-on-surface');
+                }
+            });
+
+            if (step === 1) {
+                document.getElementById('cart-step').classList.remove('hidden');
+                document.getElementById('cta-text').textContent = "Checkout Now";
+            } else if (step === 2) {
+                document.getElementById('details-step').classList.remove('hidden');
+                document.getElementById('cta-text').textContent = "Continue to Payment";
+            } else if (step === 3) {
+                document.getElementById('payment-step').classList.remove('hidden');
+                document.getElementById('cta-text').textContent = "Complete Purchase";
+                startTimer();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleCTAClick() {
+            if (currentStep < 3) {
+                goToStep(currentStep + 1);
+            } else {
+                alert("Order Placed Successfully! Processing your eco-friendly delivery.");
+            }
+        }
+
+        function setPayment(method) {
+            // UI state for buttons
+            const buttons = ['qr', 'paypal', 'crypto'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-pay-${btn}`);
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (btn === method) {
+                    el.classList.add('border-primary');
+                    el.classList.remove('border-transparent');
+                    icon.classList.add('text-primary');
+                    icon.classList.remove('text-on-surface-variant');
+                } else {
+                    el.classList.remove('border-primary');
+                    el.classList.add('border-transparent');
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Toggle contents
+            document.getElementById('pay-content-qr').classList.add('hidden');
+            document.getElementById('pay-content-paypal').classList.add('hidden');
+            document.getElementById('pay-content-crypto').classList.add('hidden');
+            document.getElementById(`pay-content-${method}`).classList.remove('hidden');
+
+            if (method === 'qr') startTimer();
+            else clearInterval(countdown);
+        }
+
+        function startTimer() {
+            clearInterval(countdown);
+            let time = 120;
+            const display = document.getElementById('timer');
+            countdown = setInterval(() => {
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+                display.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (--time < 0) clearInterval(countdown);
+            }, 1000);
+        }
+
+        function copyWallet() {
+            const btn = event.currentTarget;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            icon.textContent = 'check';
+            setTimeout(() => icon.textContent = 'content_copy', 2000);
+        }
+
+        // Initialize magnetic button effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+
+    </script>
+</body></html>

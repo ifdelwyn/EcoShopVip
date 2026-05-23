@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html class="light" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EcoShop | Premium Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#00873b",
+                    "secondary-container": "#92f5a4",
+                    "secondary-fixed": "#95f8a7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container-low": "#d1ffd8",
+                    "on-primary-fixed-variant": "#005320",
+                    "outline": "#6e7b6c",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container": "#bcfdc9",
+                    "secondary": "#006d30",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#002109",
+                    "primary": "#006b2c",
+                    "on-secondary-container": "#007233",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#a9e9b6",
+                    "on-tertiary-container": "#f7fff3",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#62df7d",
+                    "on-background": "#00210d",
+                    "primary-container": "#00873a",
+                    "surface": "#eaffea",
+                    "on-tertiary-fixed": "#002109",
+                    "on-surface-variant": "#3e4a3d",
+                    "primary-fixed": "#7ffc97",
+                    "surface-tint": "#006e2d",
+                    "inverse-on-surface": "#c3ffce",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#00210d",
+                    "surface-variant": "#b1f2be",
+                    "surface-bright": "#eaffea",
+                    "surface-container-highest": "#b1f2be",
+                    "tertiary": "#006b2d",
+                    "inverse-primary": "#62df7d",
+                    "surface-container-high": "#b7f7c3",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed": "#00210a",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#79db8d",
+                    "inverse-surface": "#00391a",
+                    "on-primary-container": "#f7fff2",
+                    "on-primary": "#ffffff",
+                    "background": "#eaffea",
+                    "outline-variant": "#bdcaba",
+                    "on-secondary-fixed-variant": "#005323"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "48px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F0FDF4; /* Ultra-light Mint Background from System */
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(22, 163, 74, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .eco-shimmer {
+            background: linear-gradient(90deg, #F0FDF4 25%, #DCFCE7 50%, #F0FDF4 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+        }
+        .magnetic-btn:hover {
+            box-shadow: 0 10px 20px rgba(0, 107, 44, 0.2);
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-bottom-color: #006b2c !important;
+        }
+        .step-transition {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .step-hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
+        }
+        .step-visible {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+            visibility: visible;
+        }
+        
+        /* Toast Animation */
+        @keyframes toastSlideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes toastSlideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        .toast-enter { animation: toastSlideIn 0.3s forwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .toast-exit { animation: toastSlideOut 0.3s forwards ease-in; }
+
+        /* RTL Adjustments */
+        [dir="rtl"] .ml-1 { margin-right: 0.25rem; margin-left: 0; }
+        [dir="rtl"] .mr-2 { margin-left: 0.5rem; margin-right: 0; }
+        [dir="rtl"] .pr-10 { padding-left: 2.5rem; padding-right: 0; }
+        [dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .right-0 { left: 0; right: auto; }
+        [dir="rtl"] .text-right { text-align: left; }
+    </style>
+</head>
+<body class="text-on-background min-h-screen overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-container-max rounded-full bg-surface/70 backdrop-blur-xl border border-white/20 shadow-xl shadow-primary/10 flex justify-between items-center px-8 py-3 z-50">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-display font-bold text-primary" data-i18n="brand">EcoShop</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" data-i18n="nav_home" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" data-i18n="nav_catalog" href="#">Catalog</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" data-i18n="nav_cart" href="#">Cart</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300" data-i18n="nav_track" href="#">Track</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative group">
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300 flex items-center">
+<span class="material-symbols-outlined text-primary">language</span>
+</button>
+<div class="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-outline-variant p-2 hidden group-hover:block w-32 z-50">
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('en')">English</button>
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('es')">Español</button>
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('fr')">Français</button>
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('de')">Deutsch</button>
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('ja')">日本語</button>
+<button class="w-full text-left px-4 py-2 hover:bg-surface-container-low rounded-lg font-label-sm text-on-surface" onclick="setLanguage('ar')">العربية</button>
+</div>
+</div>
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300 relative">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold" id="cart-badge">2</span>
+</button>
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-all duration-300"><span class="material-symbols-outlined text-primary">account_circle</span></button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative">
+<!-- Multistep Progress -->
+<div class="flex justify-center items-center mb-12 space-x-4">
+<div class="flex items-center space-x-2 transition-all duration-300" id="step-dot-1">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-label-md">1</div>
+<span class="font-label-md text-label-md text-primary" data-i18n="step_cart">Cart</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-2 opacity-40 transition-all duration-300" id="step-dot-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md">2</div>
+<span class="font-label-md text-label-md" data-i18n="step_details">Details</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-2 opacity-40 transition-all duration-300" id="step-dot-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md">3</div>
+<span class="font-label-md text-label-md" data-i18n="step_payment">Payment</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter relative">
+<!-- Step 1: Cart View -->
+<div class="lg:col-span-8 step-transition step-visible w-full" id="cart-step">
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface" data-i18n="your_selection">Your Selection</h1>
+<div class="space-y-4">
+<!-- Cart Item 1 -->
+<div class="glass-surface p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 group">
+<div class="w-32 h-32 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up shot of high-quality organic loose leaf green tea in a minimalist ceramic container, placed on a light wood surface with soft morning light filtering through. The aesthetic is clean, eco-friendly, and premium, using a palette of soft greens and natural textures to evoke a sense of wellness and purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2DhYh_FjoX173VC0Nz83vl_zMJG1C6Y-inXF-FF3KEDM0d3fv1FcxN5VZM3a3isGxuG90rEEMe6n__wDXuyhvU7AvlV2TmkEQJQiIuninasEXtX4dexbC6l_1zLoI8SpjPwkKlAQEQEJ1cJuX0tI9N3xew0MulT-X1lkyBDWBlxNFvGiRzKAdwaZSMJf5EgGVh4PY3ZAoqYqTl0Yiq3h8V5lEhmVxqDpIZaNkxX-KgLJty0lunL_WuC4hhphrtZslHxkl-jrVmPzt"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-lg text-title-lg text-on-surface" data-i18n="item_matcha">Organic Ceremonial Matcha</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" data-i18n="item_matcha_desc">Grade A • 50g Tin</p>
+<div class="mt-4 flex items-center space-x-4">
+<div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('matcha', -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-12 text-center font-bold text-label-md" id="qty-matcha">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('matcha', 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="text-error font-label-md text-label-md hover:underline decoration-2 underline-offset-4" data-i18n="btn_remove" onclick="removeItem('matcha')">Remove</button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary" id="price-matcha">$45.00</p>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="glass-surface p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 group">
+<div class="w-32 h-32 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A premium, eco-friendly bamboo fiber yoga block with an engraved minimalist floral pattern, set against a background of soft mint green fabric. The lighting is diffused and calm, highlighting the natural wood grain and sustainable texture of the product. The overall mood is sophisticated, serene, and high-end wellness boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIWOH_Z0y0CmRYaWKNpCIWrCthu_FQetxpuijZ-7FxqfFwhb9EWPiJOr7KOiPb-fC3an7L43arMD8CLfJZBMDo3UXGg3wI6s44FXl9iN5zbQv2D-UuOaKXev9CQLTvMPvAwckAg1IqQ0ha3XelEu2KbSpcvPtkod35a17w480duSHue562pqX0jDWib_zo8hwR2fU8DXdRUk8oN3bni9QKn-_PhqEvE8Z4qMxpgnIKYBXExkETxee49JNi0s5IL05oKIfODcCduZpm"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-lg text-title-lg text-on-surface" data-i18n="item_block">Bamboo Fiber Yoga Block</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" data-i18n="item_block_desc">Natural • Non-Slip</p>
+<div class="mt-4 flex items-center space-x-4">
+<div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('block', -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-12 text-center font-bold text-label-md" id="qty-block">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container rounded-full transition-colors" onclick="updateQty('block', 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="text-error font-label-md text-label-md hover:underline decoration-2 underline-offset-4" data-i18n="btn_remove" onclick="removeItem('block')">Remove</button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary" id="price-block">$28.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Details View -->
+<div class="lg:col-span-8 step-transition step-hidden w-full" id="details-step">
+<button class="flex items-center text-primary font-label-md mb-6 hover:-translate-x-1 transition-transform group" onclick="goToStep(1)">
+<span class="material-symbols-outlined mr-2 rtl:ml-2 rtl:mr-0 rtl:rotate-180 group-hover:rtl:translate-x-1">arrow_back</span> <span data-i18n="back_cart">Back to Cart</span>
+</button>
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface" data-i18n="shipping_info">Shipping Information</h1>
+<form class="glass-surface p-8 rounded-2xl space-y-6" id="shipping-form" onsubmit="event.preventDefault(); handleCTAClick();">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_name">Full Name</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all focus:border-primary" id="shipping-name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_email">Email Address</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all focus:border-primary" id="shipping-email" placeholder="john@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_address">Street Address</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all focus:border-primary" id="shipping-address" placeholder="123 Eco Way" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_city">City</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all focus:border-primary" id="shipping-city" placeholder="Greenfield" required="" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_postal">Postal Code</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all focus:border-primary" id="shipping-postal" placeholder="90210" required="" type="text"/>
+</div>
+<div class="relative col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" data-i18n="label_country">Country</label>
+<select class="w-full bg-surface-container-low border-b-2 border-outline-variant px-4 py-3 font-body-md transition-all appearance-none focus:border-primary" id="shipping-country" required="">
+<option data-i18n="country_us" value="us">United States</option>
+<option data-i18n="country_uk" value="uk">United Kingdom</option>
+<option data-i18n="country_de" value="de">Germany</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-10 pointer-events-none text-on-surface-variant rtl:left-3 rtl:right-auto">arrow_drop_down</span>
+</div>
+</div>
+<!-- Hidden submit button to trigger native form validation if needed, though we manage it via JS -->
+<button class="hidden" type="submit">Submit</button>
+</form>
+</div>
+<!-- Step 3: Payment View -->
+<div class="lg:col-span-8 step-transition step-hidden w-full" id="payment-step">
+<button class="flex items-center text-primary font-label-md mb-6 hover:-translate-x-1 transition-transform group" onclick="goToStep(2)">
+<span class="material-symbols-outlined mr-2 rtl:ml-2 rtl:mr-0 rtl:rotate-180 group-hover:rtl:translate-x-1">arrow_back</span> <span data-i18n="back_shipping">Back to Shipping</span>
+</button>
+<h1 class="font-headline-md text-headline-md mb-8 text-on-surface" data-i18n="payment_method">Payment Method</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-primary transition-all" id="btn-pay-qr" onclick="setPayment('qr')">
+<span class="material-symbols-outlined text-primary text-3xl">qr_code_2</span>
+<span class="font-label-md text-label-md" data-i18n="pay_qr">QR Code</span>
+</button>
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-transparent transition-all" id="btn-pay-paypal" onclick="setPayment('paypal')">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">payments</span>
+<span class="font-label-md text-label-md" data-i18n="pay_paypal">PayPal</span>
+</button>
+<button class="payment-method-btn glass-surface p-6 rounded-2xl flex flex-col items-center gap-3 border-2 border-transparent transition-all" id="btn-pay-crypto" onclick="setPayment('crypto')">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">currency_bitcoin</span>
+<span class="font-label-md text-label-md" data-i18n="pay_crypto">Crypto</span>
+</button>
+</div>
+<div class="glass-surface p-8 rounded-2xl min-h-[300px] flex flex-col items-center justify-center transition-all" id="payment-container">
+<!-- QR Payment Dynamic Content -->
+<div class="text-center w-full transition-opacity duration-300" id="pay-content-qr">
+<p class="font-title-lg text-title-lg mb-4" data-i18n="scan_to_pay">Scan to Pay</p>
+<div class="w-48 h-48 bg-white p-4 mx-auto mb-4 rounded-xl shadow-inner flex items-center justify-center relative overflow-hidden group cursor-pointer">
+<span class="material-symbols-outlined text-[140px] text-on-surface">qr_code_2</span>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-4xl">zoom_in</span>
+</div>
+</div>
+<div class="flex items-center justify-center space-x-2 text-primary font-bold bg-primary/10 py-2 px-4 rounded-full inline-flex">
+<span class="material-symbols-outlined animate-pulse">timer</span>
+<span id="timer">02:00</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-3" data-i18n="qr_expiry">Expires in 2 minutes for security</p>
+</div>
+<!-- PayPal Content -->
+<div class="hidden text-center w-full transition-opacity duration-300" id="pay-content-paypal">
+<p class="font-title-lg text-title-lg mb-6" data-i18n="continue_paypal">Continue with PayPal</p>
+<div class="bg-[#003087] hover:bg-[#001c52] text-white py-4 px-12 rounded-full inline-flex items-center gap-2 cursor-pointer magnetic-btn shadow-lg transition-colors">
+<span class="font-bold text-lg tracking-wider">PayPal</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-6 italic" data-i18n="paypal_redirect">You will be redirected to PayPal to complete your purchase safely.</p>
+</div>
+<!-- Crypto Content -->
+<div class="hidden w-full transition-opacity duration-300" id="pay-content-crypto">
+<p class="font-title-lg text-title-lg mb-6 text-center" data-i18n="crypto_title">Crypto Payment (USDT)</p>
+<div class="space-y-4 max-w-md mx-auto">
+<div class="flex items-center gap-2 p-2 bg-surface-container-low rounded-xl">
+<button class="flex-1 py-2 rounded-lg bg-primary text-white font-label-md shadow-sm transition-colors">TRC20</button>
+<button class="flex-1 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant font-label-md transition-colors">ERC20</button>
+</div>
+<div class="relative mt-6">
+<label class="block font-label-sm text-label-sm mb-2 ml-1 text-on-surface-variant" data-i18n="usdt_address">USDT Deposit Address</label>
+<div class="flex items-center bg-surface-container-lowest p-2 rounded-xl border border-outline-variant focus-within:border-primary transition-colors shadow-sm">
+<code class="text-sm break-all flex-grow font-mono px-2 text-on-surface" id="wallet-address">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code>
+<button class="ml-2 p-3 hover:bg-primary/10 rounded-lg transition-colors flex items-center justify-center group" onclick="copyWallet()" title="Copy Address">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary (Constant) -->
+<div class="lg:col-span-4 h-fit">
+<div class="glass-surface p-8 rounded-2xl sticky top-32 border border-outline-variant/30 shadow-sm">
+<h2 class="font-title-lg text-title-lg mb-6 text-on-surface" data-i18n="order_summary">Order Summary</h2>
+<div class="space-y-4 pb-6 border-b border-outline-variant">
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant" data-i18n="subtotal">Subtotal</span>
+<span class="font-bold text-on-surface" id="summary-subtotal">$73.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant" data-i18n="shipping_fee">Shipping Fee</span>
+<span class="font-bold text-on-surface" id="summary-shipping">$5.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-on-surface-variant" data-i18n="estimated_tax">Estimated Tax</span>
+<span class="font-bold text-on-surface" id="summary-tax">$5.84</span>
+</div>
+</div>
+<div class="pt-6 pb-8">
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-title-lg text-on-surface" data-i18n="total">Total</span>
+<span class="font-headline-md text-headline-md text-primary" id="summary-total">$83.84</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2" data-i18n="price_note">Prices include environmental sustainability contribution fees.</p>
+</div>
+<button class="w-full bg-primary hover:bg-secondary text-white py-4 rounded-full font-label-md text-label-md magnetic-btn flex items-center justify-center gap-2 group transition-colors shadow-md hover:shadow-lg" id="main-cta" onclick="handleCTAClick()">
+<span data-i18n="btn_checkout" id="cta-text">Checkout Now</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 transition-transform">arrow_forward</span>
+</button>
+<div class="mt-6 flex items-center justify-center gap-2 text-on-surface-variant bg-surface-container-lowest py-2 px-4 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm text-tertiary">lock</span>
+<span class="font-label-sm text-label-sm" data-i18n="secure_checkout">Secure Encrypted Checkout</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-highest border-t border-outline-variant py-12 px-margin-desktop mt-12">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div>
+<span class="font-display text-headline-md text-primary block mb-4" data-i18n="brand">EcoShop</span>
+<p class="font-body-md text-on-surface-variant" data-i18n="footer_desc">Redefining luxury through the lens of sustainability and organic vitality.</p>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4" data-i18n="footer_care">Customer Care</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" data-i18n="footer_privacy" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" data-i18n="footer_terms" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm" data-i18n="footer_sustainability" href="#">Sustainability Report</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4" data-i18n="footer_support">Support</h4>
+<p class="font-label-sm text-on-surface-variant" data-i18n="footer_help">Need help? Our specialists are available 24/7.</p>
+<a class="text-primary font-bold mt-2 inline-block hover:underline" data-i18n="footer_contact" href="#">Contact Support</a>
+</div>
+<div>
+<h4 class="font-title-lg text-on-surface mb-4" data-i18n="footer_newsletter">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-b-2 border-primary py-2 pr-10 focus:outline-none focus:border-tertiary transition-colors" data-i18n-placeholder="email_placeholder" placeholder="Email address" type="email"/>
+<button class="absolute right-0 bottom-2 text-primary hover:text-tertiary transition-colors rtl:left-0 rtl:right-auto"><span class="material-symbols-outlined rtl:-scale-x-100">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-12 pt-8 border-t border-outline-variant text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant" data-i18n="footer_copyright">© 2024 EcoShop Organic Commerce. All rights reserved.</p>
+</div>
+</footer>
+<!-- Toast Notifications Container -->
+<div class="fixed bottom-4 right-4 z-[100] flex flex-col gap-2 rtl:left-4 rtl:right-auto" id="toast-container"></div>
+<script>
+        // State
+        let currentStep = 1;
+        let cart = {
+            matcha: { qty: 1, price: 45.00 },
+            block: { qty: 1, price: 28.00 }
+        };
+        let countdown;
+        let currentLang = 'en';
+
+        // i18n Dictionary (Partial representation for demo)
+        const translations = {
+            en: {
+                brand: "EcoShop", nav_home: "Home", nav_catalog: "Catalog", nav_cart: "Cart", nav_track: "Track",
+                step_cart: "Cart", step_details: "Details", step_payment: "Payment",
+                your_selection: "Your Selection", item_matcha: "Organic Ceremonial Matcha", item_matcha_desc: "Grade A • 50g Tin",
+                item_block: "Bamboo Fiber Yoga Block", item_block_desc: "Natural • Non-Slip", btn_remove: "Remove",
+                back_cart: "Back to Cart", shipping_info: "Shipping Information",
+                label_name: "Full Name", label_email: "Email Address", label_address: "Street Address",
+                label_city: "City", label_postal: "Postal Code", label_country: "Country",
+                country_us: "United States", country_uk: "United Kingdom", country_de: "Germany",
+                back_shipping: "Back to Shipping", payment_method: "Payment Method",
+                pay_qr: "QR Code", pay_paypal: "PayPal", pay_crypto: "Crypto",
+                scan_to_pay: "Scan to Pay", qr_expiry: "Expires in 2 minutes for security",
+                continue_paypal: "Continue with PayPal", paypal_redirect: "You will be redirected to PayPal to complete your purchase safely.",
+                crypto_title: "Crypto Payment (USDT)", usdt_address: "USDT Deposit Address",
+                order_summary: "Order Summary", subtotal: "Subtotal", shipping_fee: "Shipping Fee", estimated_tax: "Estimated Tax",
+                total: "Total", price_note: "Prices include environmental sustainability contribution fees.",
+                btn_checkout: "Checkout Now", btn_continue: "Continue to Payment", btn_complete: "Complete Purchase",
+                secure_checkout: "Secure Encrypted Checkout", email_placeholder: "Email address",
+                toast_copy_success: "Address copied to clipboard!",
+                toast_form_error: "Please fill in all required shipping fields.",
+                toast_order_success: "Order Placed Successfully! Processing your eco-friendly delivery."
+            },
+            ar: {
+                brand: "إيكوشوب", nav_home: "الرئيسية", nav_catalog: "الكتالوج", nav_cart: "عربة التسوق", nav_track: "تتبع",
+                step_cart: "عربة التسوق", step_details: "التفاصيل", step_payment: "الدفع",
+                your_selection: "اختيارك", item_matcha: "ماتشا عضوية احتفالية", item_matcha_desc: "الدرجة أ • علبة 50 جرام",
+                item_block: "كتلة يوجا من ألياف الخيزران", item_block_desc: "طبيعي • غير قابل للانزلاق", btn_remove: "إزالة",
+                back_cart: "العودة إلى العربة", shipping_info: "معلومات الشحن",
+                label_name: "الاسم الكامل", label_email: "البريد الإلكتروني", label_address: "عنوان الشارع",
+                label_city: "المدينة", label_postal: "الرمز البريدي", label_country: "البلد",
+                country_us: "الولايات المتحدة", country_uk: "المملكة المتحدة", country_de: "ألمانيا",
+                back_shipping: "العودة إلى الشحن", payment_method: "طريقة الدفع",
+                pay_qr: "رمز الاستجابة السريعة", pay_paypal: "باي بال", pay_crypto: "عملات مشفرة",
+                scan_to_pay: "امسح للدفع", qr_expiry: "تنتهي الصلاحية خلال دقيقتين للأمان",
+                continue_paypal: "المتابعة مع باي بال", paypal_redirect: "ستتم إعادة توجيهك إلى باي بال لإكمال عملية الشراء بأمان.",
+                crypto_title: "الدفع بالعملات المشفرة (USDT)", usdt_address: "عنوان إيداع USDT",
+                order_summary: "ملخص الطلب", subtotal: "المجموع الفرعي", shipping_fee: "رسوم الشحن", estimated_tax: "الضريبة المقدرة",
+                total: "الإجمالي", price_note: "الأسعار تشمل رسوم المساهمة في الاستدامة البيئية.",
+                btn_checkout: "الدفع الآن", btn_continue: "متابعة إلى الدفع", btn_complete: "إكمال الشراء",
+                secure_checkout: "دفع آمن ومشفر", email_placeholder: "البريد الإلكتروني",
+                toast_copy_success: "تم نسخ العنوان إلى الحافظة!",
+                toast_form_error: "يرجى ملء جميع حقول الشحن المطلوبة.",
+                toast_order_success: "تم تقديم الطلب بنجاح! جاري معالجة تسليمك الصديق للبيئة."
+            }
+            // Other languages would be mapped similarly
+        };
+
+        // Fallback proxy for unimplemented languages in demo
+        const getTrans = (key) => {
+            if(translations[currentLang] && translations[currentLang][key]) return translations[currentLang][key];
+            if(translations['en'][key]) return translations['en'][key];
+            return key;
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+            document.documentElement.setAttribute('lang', lang);
+
+            // Update DOM texts
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                el.textContent = getTrans(el.getAttribute('data-i18n'));
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                el.placeholder = getTrans(el.getAttribute('data-i18n-placeholder'));
+            });
+
+            // Update dynamic CTA text based on step
+            updateCTAText();
+            calculateTotals(); // Re-render prices
+        }
+
+        // Cart Logic
+        function updateQty(item, change) {
+            if(cart[item]) {
+                cart[item].qty = Math.max(0, cart[item].qty + change);
+                document.getElementById(`qty-${item}`).textContent = cart[item].qty;
+                
+                // If 0, visual fade out (simplified for demo)
+                const itemEl = document.getElementById(`qty-${item}`).closest('.glass-surface');
+                if(cart[item].qty === 0) {
+                    itemEl.style.opacity = '0.5';
+                } else {
+                    itemEl.style.opacity = '1';
+                }
+                
+                calculateTotals();
+            }
+        }
+
+        function removeItem(item) {
+            if(cart[item]) {
+                cart[item].qty = 0;
+                const itemEl = document.getElementById(`qty-${item}`).closest('.glass-surface');
+                itemEl.style.display = 'none';
+                calculateTotals();
+            }
+        }
+
+        function calculateTotals() {
+            let subtotal = 0;
+            let totalItems = 0;
+            
+            for (const [key, item] of Object.entries(cart)) {
+                subtotal += item.qty * item.price;
+                totalItems += item.qty;
+                
+                // Update individual item price display if needed
+                const priceEl = document.getElementById(`price-${key}`);
+                if(priceEl) priceEl.textContent = `$${(item.price * item.qty).toFixed(2)}`;
+            }
+
+            const tax = subtotal * 0.08;
+            const shippingFee = (subtotal > 0 && totalItems > 0) ? 5.00 : 0;
+            const total = subtotal + tax + shippingFee;
+
+            document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('summary-shipping').textContent = `$${shippingFee.toFixed(2)}`;
+            document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cart-badge').textContent = totalItems;
+            
+            // Disable CTA if empty
+            const cta = document.getElementById('main-cta');
+            if(totalItems === 0) {
+                cta.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                cta.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        // Navigation Logic
+        function goToStep(step) {
+            if(step === 2 && currentStep === 1) {
+                // Moving from Cart to Details
+            }
+            if(step === 3 && currentStep === 2) {
+                // Moving from Details to Payment - Validate
+                if(!validateForm()) return;
+            }
+
+            currentStep = step;
+            
+            // Hide all steps securely for transition
+            const steps = ['cart-step', 'details-step', 'payment-step'];
+            steps.forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('step-visible');
+                el.classList.add('step-hidden');
+            });
+
+            // Show target step
+            const targetStepId = steps[step-1];
+            const targetEl = document.getElementById(targetStepId);
+            // Slight delay to allow hide transition before show (simulate smooth crossfade)
+            setTimeout(() => {
+                targetEl.classList.remove('step-hidden');
+                targetEl.classList.add('step-visible');
+            }, 50);
+
+            // Update Progress Dots
+            const dots = [1, 2, 3];
+            dots.forEach(num => {
+                const dot = document.getElementById(`step-dot-${num}`);
+                if (num <= step) {
+                    dot.classList.remove('opacity-40');
+                    if(num === step) {
+                        dot.querySelector('div').classList.add('bg-primary', 'text-white');
+                        dot.querySelector('div').classList.remove('bg-surface-container-highest', 'text-on-surface');
+                        dot.querySelector('span').classList.add('text-primary');
+                    } else {
+                        // Completed step styling
+                        dot.querySelector('div').classList.add('bg-primary/20', 'text-primary');
+                        dot.querySelector('div').classList.remove('bg-primary', 'text-white', 'bg-surface-container-highest', 'text-on-surface');
+                        dot.querySelector('span').classList.remove('text-primary');
+                    }
+                } else {
+                    dot.classList.add('opacity-40');
+                    dot.querySelector('div').classList.remove('bg-primary', 'text-white', 'bg-primary/20', 'text-primary');
+                    dot.querySelector('div').classList.add('bg-surface-container-highest', 'text-on-surface');
+                    dot.querySelector('span').classList.remove('text-primary');
+                }
+            });
+
+            updateCTAText();
+
+            if (step === 3) {
+                // Ensure default payment is active
+                setPayment('qr');
+            } else {
+                clearInterval(countdown);
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateCTAText() {
+            const ctaText = document.getElementById('cta-text');
+            if (currentStep === 1) {
+                ctaText.textContent = getTrans("btn_checkout");
+            } else if (currentStep === 2) {
+                ctaText.textContent = getTrans("btn_continue");
+            } else if (currentStep === 3) {
+                ctaText.textContent = getTrans("btn_complete");
+            }
+        }
+
+        function validateForm() {
+            const form = document.getElementById('shipping-form');
+            if(!form.checkValidity()) {
+                showToast(getTrans("toast_form_error"), 'error');
+                form.reportValidity();
+                return false;
+            }
+            return true;
+        }
+
+        function handleCTAClick() {
+            if (currentStep < 3) {
+                goToStep(currentStep + 1);
+            } else {
+                showToast(getTrans("toast_order_success"), 'success');
+                // Simulate order completion reset
+                setTimeout(() => {
+                    cart.matcha.qty = 0;
+                    cart.block.qty = 0;
+                    calculateTotals();
+                    goToStep(1);
+                }, 3000);
+            }
+        }
+
+        // Payment Logic
+        function setPayment(method) {
+            // UI state for buttons
+            const buttons = ['qr', 'paypal', 'crypto'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-pay-${btn}`);
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (btn === method) {
+                    el.classList.add('border-primary', 'bg-primary/5', 'scale-105');
+                    el.classList.remove('border-transparent');
+                    icon.classList.add('text-primary');
+                    icon.classList.remove('text-on-surface-variant');
+                } else {
+                    el.classList.remove('border-primary', 'bg-primary/5', 'scale-105');
+                    el.classList.add('border-transparent');
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Toggle contents with fade
+            buttons.forEach(btn => {
+                const content = document.getElementById(`pay-content-${btn}`);
+                if(btn === method) {
+                    content.classList.remove('hidden');
+                    setTimeout(() => content.classList.remove('opacity-0'), 10);
+                } else {
+                    content.classList.add('opacity-0');
+                    setTimeout(() => content.classList.add('hidden'), 300);
+                }
+            });
+
+            if (method === 'qr') startTimer();
+            else clearInterval(countdown);
+        }
+
+        function startTimer() {
+            clearInterval(countdown);
+            let time = 120; // 2 minutes
+            const display = document.getElementById('timer');
+            
+            // Initial render
+            renderTime(time, display);
+            
+            countdown = setInterval(() => {
+                time--;
+                renderTime(time, display);
+                if (time <= 0) {
+                    clearInterval(countdown);
+                    display.textContent = "Expired";
+                    display.classList.add('text-error');
+                    // Add logic to refresh QR
+                }
+            }, 1000);
+        }
+
+        function renderTime(time, display) {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            display.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function copyWallet() {
+            const address = document.getElementById('wallet-address').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = event.currentTarget;
+                const icon = btn.querySelector('.material-symbols-outlined');
+                const origIcon = icon.textContent;
+                
+                icon.textContent = 'check';
+                icon.classList.add('text-secondary-container');
+                showToast(getTrans("toast_copy_success"), 'success');
+                
+                setTimeout(() => {
+                    icon.textContent = origIcon;
+                    icon.classList.remove('text-secondary-container');
+                }, 2000);
+            });
+        }
+
+        // Toast System
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-primary' : 'bg-error';
+            const icon = type === 'success' ? 'check_circle' : 'error';
+            
+            toast.className = `${bgColor} text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 toast-enter font-body-md`;
+            toast.innerHTML = `
+                <span class="material-symbols-outlined">${icon}</span>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" class="ml-auto hover:opacity-70 rtl:ml-0 rtl:mr-auto">
+                    <span class="material-symbols-outlined text-sm">close</span>
+                </button>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                if(toast.parentElement) {
+                    toast.classList.replace('toast-enter', 'toast-exit');
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 4000);
+        }
+
+        // Initialize magnetic button effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+
+        // Initial setup
+        calculateTotals();
+        setLanguage('en');
+
+    </script>
+</body></html>
